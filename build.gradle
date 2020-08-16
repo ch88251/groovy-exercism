@@ -1,18 +1,21 @@
-apply plugin: "groovy"
+subprojects {
+  apply plugin: "groovy"
+  apply plugin: 'idea'
 
-repositories {
+  repositories {
     mavenCentral()
-}
+  }
 
-dependencies {
+  dependencies {
     testImplementation "org.spockframework:spock-core:2.0-M2-groovy-3.0"
     implementation "org.codehaus.groovy:groovy-all:3.0.2"
-}
+  }
 
-test {
+  test {
     useJUnitPlatform()
     testLogging {
-        exceptionFormat = 'full'
-        events = ["passed", "failed", "skipped"]
+      events "passed", "skipped", "failed"
     }
+  }
 }
+
